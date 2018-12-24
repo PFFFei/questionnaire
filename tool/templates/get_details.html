@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>问卷详情</title>
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+{% if titles %}
+    {% for content in contents %}
+	<div class="panel panel-default" align="center">
+		{% for each in content %}
+		<div class="radio" align="center">
+			<label>
+				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> {{ each }}
+			</label>
+		</div>
+		{% endfor %}
+	</div>
+	{% endfor %}
+{% else %}
+    <div class="panel panel-default" align="center">
+    	<h4>无数据</h4>
+	</div>
+{% endif %}
+
+{% if titles %} 
+<center>
+    <a class="btn btn-xs btn-info" href="{% url 'make_content' titles.number %}" >点击添加</a>
+    <a class="btn btn-xs btn-info" href="/">返回问卷列表</a>
+</center>
+{% endif %}
+</body>
+</html>
